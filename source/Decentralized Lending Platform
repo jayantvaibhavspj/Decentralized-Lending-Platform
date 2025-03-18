@@ -1,0 +1,38 @@
+module MyModule::Marketplace {
+
+    use aptos_framework::signer;
+    use aptos_framework::coin;
+    use aptos_framework::aptos_coin::AptosCoin;
+
+    /// Struct representing a service listing.
+    struct Service has store, key {
+        owner: address,   // The service provider's address
+        price: u64,       // The price of the service in AptosCoin
+        is_available: bool, // Availability status of the service
+    }
+
+    /// Function to create a new service listing.
+    public fun create_service(owner: &signer, price: u64) {
+        let service = Service {
+            owner: signer::address_of(owner),
+            price,
+            is_available: true,
+        };
+        move_to(owner, service);
+    }
+
+    /// Function for users to purchase a service.
+    public fun purchase_service(buyer: &signer, service_owner: address) acquires Service {
+        let service = borrow_global_mut<Service>(service_owner);
+
+        // Ensure the service is available
+        assert!(service.is_available, 1); // Error code 1: Service not available
+
+        // Transfer payment from the buyer to the service provider
+        let payment = coin::withdraw<AptosCoin>(buyer, service.price);
+        coin::deposit<AptosCoin>(service.owner, payment);
+
+        // Mark the service as unavailable after purchase
+        service.is_available = false;
+    }
+}
