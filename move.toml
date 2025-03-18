@@ -1,0 +1,16 @@
+[package]
+name = "dms"
+version = "1.0.0"
+authors = []
+
+[addresses]
+MyModule = "0xa85de48905f577c8be721ef1aee8133bc7f789675d7292e0a5aea597f8684400"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
