@@ -35,5 +35,5 @@ The future scope of the Decentralized Lending Platform includes:
 
 ---
 
-For more information about the implementation and usage of the smart contract, please refer to the documentation provided in the repository.
+## Contract Address:
 
