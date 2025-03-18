@@ -35,5 +35,6 @@ The future scope of the Decentralized Lending Platform includes:
 
 ---
 
-## Contract Address:
+## Contract Address:0xa85de48905f577c8be721ef1aee8133bc7f789675d7292e0a5aea597f8684400
+![image](https://github.com/user-attachments/assets/2baba424-3462-4b5c-8d18-a858b6b04ec8)
 
